@@ -8,23 +8,32 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
+        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
+
+        System.out.println(classicalMusic.getSong());
+
+        RockMusic rockMusic1 = context.getBean("rockMusic", RockMusic.class);
+        System.out.println(rockMusic1.getSong());
+        RockMusic rockMusic2 = context.getBean("rockMusic", RockMusic.class);
+        System.out.println(rockMusic2.getSong());
+
         // создание связи через spring Dependency injection
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
+//        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+//        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
+//
+//        boolean comparison = musicPlayer == musicPlayer1;
+//
+//        System.out.println(comparison);
+//        System.out.println(musicPlayer);
+//        System.out.println(musicPlayer1);
+//
+//        musicPlayer.setVolume(10);
+//        System.out.println(musicPlayer.getVolume() + " " + musicPlayer1.getVolume());
 
-        boolean comparison = musicPlayer == musicPlayer1;
+        //musicPlayer.playMusicList();
 
-        System.out.println(comparison);
-        System.out.println(musicPlayer);
-        System.out.println(musicPlayer1);
-
-        musicPlayer.setVolume(10);
-        System.out.println(musicPlayer.getVolume() + " " + musicPlayer1.getVolume());
-
-        musicPlayer.playMusicList();
-
-        System.out.println(musicPlayer.getName());
-        System.out.println(musicPlayer.getVolume());
+        //System.out.println(musicPlayer.getName());
+        //System.out.println(musicPlayer.getVolume());
 
         context.close();
     }
