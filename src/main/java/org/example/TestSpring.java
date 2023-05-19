@@ -8,12 +8,19 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        // создание связи вручную
-        //Music music = context.getBean("musicBean", Music.class);
-        //MusicPlayer musicPlayer = new MusicPlayer(music);
-
         // создание связи через spring Dependency injection
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
+
+        boolean comparison = musicPlayer == musicPlayer1;
+
+        System.out.println(comparison);
+        System.out.println(musicPlayer);
+        System.out.println(musicPlayer1);
+
+        musicPlayer.setVolume(10);
+        System.out.println(musicPlayer.getVolume() + " " + musicPlayer1.getVolume());
+
         musicPlayer.playMusicList();
 
         System.out.println(musicPlayer.getName());
