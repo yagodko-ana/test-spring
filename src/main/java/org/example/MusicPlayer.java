@@ -2,6 +2,7 @@ package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -11,6 +12,27 @@ public class MusicPlayer {
 //    @Autowired
 //    @Qualifier("classicalMusic")
 //    private Music music;
+
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
     private Music music1;
     private Music music2;
@@ -27,12 +49,7 @@ public class MusicPlayer {
      * и здесь уже доставал рандомную песню из спика
      * FYI важно было при этом поменять тип возвращемого значения и в интерфейсе Music на список
      * */
-    public void playMusic(Genre genre) {
-        if (genre == Genre.CLASSICAL)
-            System.out.println(music2.getSong());
-        else if (genre == Genre.ROCK)
-             System.out.println(music1.getSong());
-        else
-             System.out.println("-");
+    public String playMusic() {
+         return music1.getSong() + ", " + music2.getSong();
     }
 }
