@@ -27,12 +27,7 @@ public class MusicPlayer {
      * и здесь уже доставал рандомную песню из спика
      * FYI важно было при этом поменять тип возвращемого значения и в интерфейсе Music на список
      * */
-    public void playMusic(Genre genre) {
-        if (genre == Genre.CLASSICAL)
-            System.out.println(music2.getSong());
-        else if (genre == Genre.ROCK)
-             System.out.println(music1.getSong());
-        else
-             System.out.println("-");
+    public String playMusic() {
+         return music1.getSong() + ", " + music2.getSong();
     }
 }
