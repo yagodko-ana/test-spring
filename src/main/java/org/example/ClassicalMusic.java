@@ -1,5 +1,6 @@
 package org.example;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 @Component
+@Scope("prototype")
 public class ClassicalMusic implements Music{
     private static List<String> songs = new ArrayList<>();
 
