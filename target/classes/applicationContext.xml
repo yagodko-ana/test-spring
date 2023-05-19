@@ -9,16 +9,30 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean"
+    <bean id="classicalMusic"
           class="org.example.ClassicalMusic">
+    </bean>
+
+    <bean id="rockMusic"
+          class="org.example.RockMusic">
+    </bean>
+
+    <bean id="rapMusic"
+          class="org.example.RapMusic">
     </bean>
 
     <bean id="musicPlayer"
           class="org.example.MusicPlayer">
-        <property name="music" ref="musicBean"/>
-
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
+
+        <property name="musicList">
+            <list>
+                <ref bean="classicalMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="rapMusic"/>
+            </list>
+        </property>
     </bean>
 
 
