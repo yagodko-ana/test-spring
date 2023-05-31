@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Random;
 
 //@Component
@@ -34,22 +35,19 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    private Music music1;
-    private Music music2;
+    private List<Music> musicList;
 
     //@Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music1,
-                       @Qualifier("classicalMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    /**
-     * Наиль использовал рандом здесь, так как возвращал не getSong, а getSongs (список песен)
-     * и здесь уже доставал рандомную песню из спика
-     * FYI важно было при этом поменять тип возвращемого значения и в интерфейсе Music на список
-     * */
     public String playMusic() {
-         return music1.getSong() + ", " + music2.getSong();
+        Random random = new Random();
+
+        int randomItem = random.nextInt(musicList.size());
+        Music randomMusic = musicList.get(randomItem);
+
+        return randomMusic.getSong();
     }
 }
